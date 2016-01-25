@@ -46,7 +46,6 @@ def resolve_uri(uri):
     content = ''
     # print('the URI is "{}" '.format(uri))
     path = pathlib.Path("webroot{0}".format(uri))
-    root = "webroot"
     # print("the path is {}".format(path))
     # pdb.set_trace()
     try:
@@ -59,8 +58,9 @@ def resolve_uri(uri):
                 # print("path is a directory.")
                 mime_type = 'text/plain'
                 # print("directory mime type is: {}".format(mime_type))
-                directory  = os.listdir(root)
-                content = ", ".join(directory).encode('utf8')
+                root = "webroot"
+                directory = os.listdir(root)
+                content = "\n".join(directory).encode('utf8')
                 # print("directory contents: {}".format(content))
             else:
                 try:
